@@ -26,7 +26,6 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 /build
-gradlew*
 lombok.config
 settings.gradle
 
