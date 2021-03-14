@@ -11,8 +11,10 @@ import java.util.List;
 public class TrelloBoardDto {
     @JsonProperty("name")
     private String name;
+
     @JsonProperty("id")
     private String id;
+
     @JsonProperty("lists")
-    private List<TrelloBoardDto> lists;
+    private List<TrelloListDto> lists;
 }

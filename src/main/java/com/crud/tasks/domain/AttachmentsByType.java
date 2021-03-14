@@ -6,11 +6,7 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class TrelloListDto {
-    @JsonProperty("name")
-    private String name;
-    @JsonProperty("id")
-    private String id;
-    @JsonProperty("closed")
-    private boolean isClosed;
+public class AttachmentsByType {
+    @JsonProperty("trello")
+    private Trello trello;
 }
