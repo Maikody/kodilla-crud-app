@@ -28,6 +28,8 @@ out/
 /build
 lombok.config
 settings.gradle
+Dockerfile
+/WebContent/**
 
 ### NetBeans ###
 /nbproject/private/
