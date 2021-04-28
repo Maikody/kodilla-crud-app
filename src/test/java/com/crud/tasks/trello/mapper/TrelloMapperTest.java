@@ -10,8 +10,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith({SpringExtension.class})
 @ContextConfiguration(classes = {TrelloMapper.class})
@@ -27,10 +26,10 @@ class TrelloMapperTest {
 
         List<TrelloBoard> trelloBoards = trelloMapper.mapToBoards(trelloBoardDtos);
 
-        assertEquals(1, trelloBoards.size());
-        assertEquals("Kodilla Application", trelloBoards.get(0).getName());
-        assertEquals("1", trelloBoards.get(0).getId());
-        assertEquals(1, trelloBoards.get(0).getLists().size());
+        assertThat(trelloBoards).hasSize(1);
+        assertThat(trelloBoards).extracting("id").containsOnly("1");
+        assertThat(trelloBoards).extracting("name").containsOnly("Kodilla Application");
+        assertThat(trelloBoards).extracting("lists").hasSize(1);
     }
 
     @Test
@@ -40,10 +39,10 @@ class TrelloMapperTest {
 
         List<TrelloBoardDto> trelloBoardDtos = trelloMapper.mapToBoardsDto(trelloBoard);
 
-        assertEquals(1, trelloBoardDtos.size());
-        assertEquals("Kodilla Application", trelloBoardDtos.get(0).getName());
-        assertEquals("1", trelloBoardDtos.get(0).getId());
-        assertEquals(1, trelloBoardDtos.get(0).getLists().size());
+        assertThat(trelloBoardDtos).hasSize(1);
+        assertThat(trelloBoardDtos).extracting("id").containsOnly("1");
+        assertThat(trelloBoardDtos).extracting("name").containsOnly("Kodilla Application");
+        assertThat(trelloBoardDtos).extracting("lists").hasSize(1);
     }
 
     @Test
@@ -52,10 +51,10 @@ class TrelloMapperTest {
 
         List<TrelloList> trelloLists = trelloMapper.mapToList(trelloListDtos);
 
-        assertEquals(1, trelloLists.size());
-        assertEquals("TODO", trelloLists.get(0).getName());
-        assertEquals("1", trelloLists.get(0).getId());
-        assertFalse(trelloLists.get(0).isClosed());
+        assertThat(trelloLists).hasSize(1);
+        assertThat(trelloLists).extracting("id").containsOnly("1");
+        assertThat(trelloLists).extracting("name").containsOnly("TODO");
+        assertThat(trelloLists).extracting("isClosed").containsOnly(false);
     }
 
     @Test
@@ -64,10 +63,10 @@ class TrelloMapperTest {
 
         List<TrelloListDto> trelloListDtos = trelloMapper.mapToListDto(trelloLists);
 
-        assertEquals(1, trelloListDtos.size());
-        assertEquals("TODO", trelloListDtos.get(0).getName());
-        assertEquals("1", trelloListDtos.get(0).getId());
-        assertFalse(trelloListDtos.get(0).isClosed());
+        assertThat(trelloListDtos).hasSize(1);
+        assertThat(trelloListDtos).extracting("id").containsOnly("1");
+        assertThat(trelloListDtos).extracting("name").containsOnly("TODO");
+        assertThat(trelloListDtos).extracting("isClosed").containsOnly(false);
     }
 
     @Test
@@ -76,10 +75,10 @@ class TrelloMapperTest {
 
         TrelloCard trelloCard = trelloMapper.mapToCard(cardDto);
 
-        assertEquals("Postman", trelloCard.getName());
-        assertEquals("Test controllers", trelloCard.getDescription());
-        assertEquals("1", trelloCard.getPos());
-        assertEquals("1", trelloCard.getListId());
+        assertThat(trelloCard).extracting("name").containsExactly("Postman");
+        assertThat(trelloCard).extracting("description").containsExactly("Test controllers");
+        assertThat(trelloCard).extracting("pos").containsExactly("1");
+        assertThat(trelloCard).extracting("listId").containsExactly("1");
     }
 
     @Test
@@ -88,10 +87,10 @@ class TrelloMapperTest {
 
         TrelloCardDto trelloCardDto = trelloMapper.mapToCardDto(card);
 
-        assertEquals("Postman", trelloCardDto.getName());
-        assertEquals("Test controllers", trelloCardDto.getDescription());
-        assertEquals("1", trelloCardDto.getPos());
-        assertEquals("1", trelloCardDto.getListId());
+        assertThat(trelloCardDto).extracting("name").containsExactly("Postman");
+        assertThat(trelloCardDto).extracting("description").containsExactly("Test controllers");
+        assertThat(trelloCardDto).extracting("pos").containsExactly("1");
+        assertThat(trelloCardDto).extracting("listId").containsExactly("1");
     }
 
     private List<TrelloBoard> getListOfTrelloBoards(List<TrelloList> trelloLists) {

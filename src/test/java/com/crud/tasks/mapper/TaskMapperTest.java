@@ -12,6 +12,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith({SpringExtension.class})
@@ -27,9 +28,9 @@ class TaskMapperTest {
 
         Task task = taskMapper.mapToTask(taskDto);
 
-        assertEquals(1L, task.getId());
-        assertEquals("Java", task.getTitle());
-        assertEquals("Read Effective Java", task.getContent());
+        assertThat(task).extracting("id").containsExactly(1L);
+        assertThat(task).extracting("title").containsExactly("Java");
+        assertThat(task).extracting("content").containsExactly("Read Effective Java");
     }
 
     @Test
@@ -38,9 +39,9 @@ class TaskMapperTest {
 
         TaskDto taskDto = taskMapper.mapToTaskDto(task);
 
-        assertEquals(1L, taskDto.getId());
-        assertEquals("Java", taskDto.getTitle());
-        assertEquals("Read Effective Java", taskDto.getContent());
+        assertThat(taskDto).extracting("id").containsExactly(1L);
+        assertThat(taskDto).extracting("title").containsExactly("Java");
+        assertThat(taskDto).extracting("content").containsExactly("Read Effective Java");
     }
 
     @Test
@@ -49,10 +50,10 @@ class TaskMapperTest {
 
         List<TaskDto> taskDtos = taskMapper.mapToTaskDtoList(tasks);
 
-        assertEquals(1, taskDtos.size());
-        assertEquals(1L, taskDtos.get(0).getId());
-        assertEquals("Java", taskDtos.get(0).getTitle());
-        assertEquals("Read Effective Java", taskDtos.get(0).getContent());
+        assertThat(taskDtos).hasSize(1);
+        assertThat(taskDtos).extracting("id").containsOnly(1L);
+        assertThat(taskDtos).extracting("title").containsOnly("Java");
+        assertThat(taskDtos).extracting("content").containsOnly("Read Effective Java");
     }
 
     private List<Task> getListOfTasks() {
