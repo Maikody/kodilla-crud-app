@@ -94,12 +94,12 @@ class TrelloMapperTest {
     }
 
     private List<TrelloBoard> getListOfTrelloBoards(List<TrelloList> trelloLists) {
-        TrelloBoard trelloBoard1 = new TrelloBoard("Kodilla Application", "1", trelloLists);
+        TrelloBoard trelloBoard1 = new TrelloBoard("1", "Kodilla Application", trelloLists);
         return List.of(trelloBoard1);
     }
 
     private List<TrelloBoardDto> getListOfTrelloBoardDtos(List<TrelloListDto> trelloListDtos) {
-        TrelloBoardDto trelloBoardDto1 = new TrelloBoardDto("Kodilla Application", "1", trelloListDtos);
+        TrelloBoardDto trelloBoardDto1 = new TrelloBoardDto("1", "Kodilla Application", trelloListDtos);
         return List.of(trelloBoardDto1);
     }
 
