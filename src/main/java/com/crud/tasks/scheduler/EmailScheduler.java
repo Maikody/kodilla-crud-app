@@ -21,7 +21,7 @@ public class EmailScheduler {
     public void sendInformationEmail() {
         long size = taskRepository.count();
         emailService.send(Mail.builder()
-                .mailTo(adminConfig.getAdminMail())
+                .mailTo(adminConfig.getMail())
                 .subject(SUBJECT)
                 .message("Currently in database you got: " + size + (size == 1 ? " task" : " tasks"))
                 .build() );

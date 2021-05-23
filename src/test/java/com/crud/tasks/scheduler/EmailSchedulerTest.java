@@ -36,7 +36,7 @@ class EmailSchedulerTest {
                 .build();
 
         when(taskRepository.count()).thenReturn(1L);
-        when(adminConfig.getAdminMail()).thenReturn("admin@example.com");
+        when(adminConfig.getMail()).thenReturn("admin@example.com");
 
         emailScheduler.sendInformationEmail();
 
