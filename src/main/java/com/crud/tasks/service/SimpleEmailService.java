@@ -38,7 +38,7 @@ public class SimpleEmailService {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
             messageHelper.setTo(mail.getMailTo());
             messageHelper.setSubject(mail.getSubject());
-            messageHelper.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()),true);
+            messageHelper.setText(mail.getSubject().contains("Once a day email") ? mailCreatorService.buildDailyInfoEmail(mail.getMessage()) : mailCreatorService.buildTrelloCardEmail(mail.getMessage()),true);
         };
     }
 

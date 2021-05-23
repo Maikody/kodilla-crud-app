@@ -17,13 +17,13 @@ public class EmailScheduler {
     private final TaskRepository taskRepository;
     private final AdminConfig adminConfig;
 
-    @Scheduled(cron = "0 0 10 * * *")
+    @Scheduled(cron = "0 * * * * *")
     public void sendInformationEmail() {
         long size = taskRepository.count();
         emailService.send(Mail.builder()
                 .mailTo(adminConfig.getAdminMail())
                 .subject(SUBJECT)
-                .message("Currently in database you got: " + size + (size > 1 ? " tasks" : " task"))
+                .message("Currently in database you got: " + size + (size == 1 ? " task" : " tasks"))
                 .build() );
     }
 
