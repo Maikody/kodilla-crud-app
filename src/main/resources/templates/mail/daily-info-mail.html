@@ -96,9 +96,9 @@
                                 <tr>
                                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
                                         <p th:if="${is_friend}" style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
-                                            Yo <span th:text="${admin_config.getName()}"></span>,</p>
+                                            Yo <span th:text="${admin_config.getAdminName()}"></span>,</p>
                                         <p th:unless="${is_friend}" style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
-                                            Dear <span th:text="${admin_config.getName()}"></span>,</p>
+                                            Dear <span th:text="${admin_config.getAdminName()}"></span>,</p>
                                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;" th:text="${message}"></p>
                                         <p th:if="${zero_tasks}" style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> Don't wait and create new task in our app:)</p>
                                         <p th:unless="${zero_tasks}" style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> Nice to see that you're with us:)</p>

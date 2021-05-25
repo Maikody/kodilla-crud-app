@@ -1,13 +1,16 @@
 package com.crud.tasks.config;
 
 import lombok.Getter;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import lombok.Setter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 @Getter
-@ConfigurationProperties("admin")
+@Setter
 public class AdminConfig {
-    private String mail;
-    private String name;
+    @Value("${admin.mail}")
+    private String adminMail;
+    @Value("${admin.name}")
+    private String adminName;
 }

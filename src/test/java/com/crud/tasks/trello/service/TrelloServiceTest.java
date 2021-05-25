@@ -54,7 +54,7 @@ class TrelloServiceTest {
                 .build();
 
         when(trelloClient.createNewCard(cardDto)).thenReturn(createdTrelloCardDto);
-        when(adminConfig.getMail()).thenReturn("admin@example.com");
+        when(adminConfig.getAdminMail()).thenReturn("admin@example.com");
 
         CreatedTrelloCardDto trelloCard = trelloService.createTrelloCard(cardDto);
 
